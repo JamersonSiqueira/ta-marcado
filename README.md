@@ -1,2 +1,2 @@
-# todo-udemy
-Aplicação criada com base no curso Projeto Completo: XD, NodeJs, MongoDB, React Native e React, criado por Rodrigo Gonçalves Santana e disponibilizado na plataforma Udemy
+# Tá Marcado
+Aplicação criada como MVP da disciplina Projeto Integrado, do curso Sistemas de Informação, turma 2021.1
