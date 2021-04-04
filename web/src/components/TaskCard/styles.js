@@ -35,7 +35,7 @@ export const BottomCard = styled.div`
     justify-content: space-around;
 
     strong {
-        color: #EE6B26;
+        color: #38A6FF;
         font-weight: bold;
     }
 

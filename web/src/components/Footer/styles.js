@@ -3,15 +3,19 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     height: 50px;
-    background: #20295F;
+    background: #38A6FF;
     position: fixed;
     bottom: 0;
     display: flex;
-    border-top: 5px solid #EE6B26;
+    border-top: 5px solid #FFFFFF;
     align-items: center;
     justify-content: center;
 
     span {
         color: #FFF;   
+    }
+    img{
+        width: 119px;
+        height: 50px;
     }
 `

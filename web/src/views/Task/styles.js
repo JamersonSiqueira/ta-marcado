@@ -63,7 +63,7 @@ export const Input = styled.div`
         font-size: 16px;
         padding: 13px;
         border: none;
-        border-bottom: 1px solid #EE6B26;
+        border-bottom: 1px solid #38A6FF;
     }
 
     img {
@@ -90,7 +90,7 @@ export const TextArea = styled.div`
     textarea {
         font-size: 16px;
         padding: 13px;
-        border: 1px solid #EE6B26;
+        border: 1px solid #38A6FF;
     }
 `
 
@@ -102,7 +102,7 @@ export const Options = styled.div`
         background: none;
         border: none;
         font-weight: bold;
-        color: #20295F;
+        color: #F00;
         font-size: 18px;
         cursor: pointer;
 
@@ -115,15 +115,15 @@ export const Options = styled.div`
     div {
         display: flex;
         align-items: center;
-        color: #EE6B26;
+        color: #38A6FF;
         font-weight: bold;
         font-size: 18px;
 
         input {
             width: 15px;
             height: 15px;
-            border: 1px solid #EE6B26;
-            background: #EE6B26;
+            border: 1px solid #38A6FF;
+            background: #38A6FF;
         }
     }
 `
@@ -134,7 +134,7 @@ export const Save = styled.div `
 
     button {
         width: 100%;
-        background-color: #EE6B26;
+        background-color: #38A6FF;
         border: none;
         font-size: 20px;
         color: #FFF;

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     height: 70px;
-    background: #20295F;
+    background: #38A6FF;
     display: flex;
-    border-bottom: 5px solid #EE6B26;
+    border-bottom: 5px solid #FFFFFF;
 `
 
 export const LeftSide = styled.div`
@@ -16,8 +16,8 @@ export const LeftSide = styled.div`
     padding-left: 10px;
 
     img {
-        width: 100px;
-        height: 40px;
+        width: 120px;
+        height: 55px;
     }
 `
 
@@ -36,7 +36,7 @@ export const RightSide = styled.div`
         margin: 0 10px;
 
         &:hover{
-            color: #EE6B26;
+            color: #006BC2;
         }
     }
 
@@ -54,7 +54,7 @@ export const RightSide = styled.div`
 
         span {
             background: #FFF;
-            color: #EE6B26;
+            color: #006BC2;
             padding: 3px 7px;
             border-radius: 50%;
             position: relative;
@@ -81,7 +81,7 @@ export const RightSide = styled.div`
         margin: 0 10px;
 
         &:hover{
-            color: #EE6B26;
+            color: #006BC2;
         }
 
     }

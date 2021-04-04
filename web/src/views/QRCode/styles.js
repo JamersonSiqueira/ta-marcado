@@ -16,13 +16,17 @@ export const Content = styled.div`
     align-items: center;
     flex-direction: column;
     padding-bottom: 70px;
+    padding-top: 60px;
+    img {
+        width: 30%;
+    }
 
     h1 {
-        color: #EE6B26;
+        color: #38A6FF;
     }
 
     p {
-        color: #20295F;
+        color: #006BC2;
     }
 `
 
@@ -36,20 +40,25 @@ export const ValidationCode = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px;
+    align-itens: center;
+    justify-content: center;
 
     span {
         font-weight: bold;
+        align-itens: center;
+        justify-content: center;
     }
 
     input {
         font-size: 18px;
         padding: 10px;
         text-align: center;
+        margin: 10px;
     }
 
     button {
         font-weight: bold;
-        background: #EE6B26;
+        background: #38A6FF;
         color: #FFF;
         font-size: 18px;
         padding: 10px;
@@ -59,7 +68,7 @@ export const ValidationCode = styled.div`
         margin-top: 10px;
 
         &:hover {
-            background: #20295F;
+            background: #006BC2;
         }
     }
 `

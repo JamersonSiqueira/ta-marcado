@@ -4,7 +4,7 @@ export const Container = styled.div`
     width: 210px;
     height: 60px;
     padding: 10px;
-    background: ${props => props.actived ? '#EE6B26' : '#20295F'};
+    background: ${props => props.actived ? '#006BC2' : '#38A6FF'};
     border-radius: 5px;
     cursor: pointer;
     
@@ -18,11 +18,11 @@ export const Container = styled.div`
     }
 
     span {
-        color: #FFF;
+        color: ${props => props.actived ? '#FFFFFF' : '#FFFFFF'};
         font-weight: bold;
         align-self: flex-end;
     }
     &:hover {
-        background: #EE6B26;
+        background: #006BC2;
     }
 `
