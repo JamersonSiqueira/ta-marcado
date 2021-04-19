@@ -1,3 +1,3 @@
-const isConnected = localStorage.getItem('@todo/macaddress');
+const isConnected = localStorage.getItem('@tamarcado/userid');
 
 export default isConnected;

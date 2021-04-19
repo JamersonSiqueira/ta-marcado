@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import Home from '../views/Home';
 import Task from '../views/Task';
-import QRCode from '../views/QRCode';
+import Login from '../views/Login';
 
 export default function Routes (){
 
@@ -13,7 +13,7 @@ export default function Routes (){
                 <Route path="/" exact component={Home}></Route>
                 <Route path="/task" exact component={Task}></Route>
                 <Route path="/task/:id" exact component={Task}></Route>
-                <Route path="/qrcode" exact component={QRCode}></Route>
+                <Route path="/login" exact component={Login}></Route>
             </Switch>
         </BrowserRouter>
     )

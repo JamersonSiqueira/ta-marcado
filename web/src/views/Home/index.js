@@ -9,7 +9,7 @@ import {Link, Redirect} from 'react-router-dom';
 import isConnected from '../../utils/isConnected';
 
 function Home() {
-  const [filterActived, setFilterActived] = useState('all');
+  const [filterActived, setFilterActived] = useState('today');
   const [tasks, setTasks] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
@@ -36,7 +36,7 @@ function Home() {
 
   return (
       <S.Container>
-        {redirect && <Redirect to="/qrcode/"/>}
+        {redirect && <Redirect to="/login/"/>}
       <Header onClickNotify={Notificacao}/>
       <S.FilterArea>
         <button type="button" onClick={() => setFilterActived("all")}>

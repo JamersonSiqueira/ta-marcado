@@ -21,7 +21,7 @@ function Header({onClickNotify}) {
   })
 
   async function logout(){
-    localStorage.removeItem('@todo/macaddress');
+    localStorage.removeItem('@tamarcado/userid');
     window.location.reload();
   }
 

@@ -49,7 +49,7 @@ function Task({match}) {
 
     if(match.params.id){
       await api.put(`/task/${match.params.id}`, {
-        macaddress: isConnected,
+        userid: isConnected,
         done,
         type,
         title,
@@ -61,7 +61,7 @@ function Task({match}) {
         )
     } else {
     await api.post('/task', {
-      macaddress: isConnected,
+      userid: isConnected,
       type,
       title,
       description,

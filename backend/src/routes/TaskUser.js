@@ -7,4 +7,7 @@ router.put('/:id', UserController.update);
 router.get('/:id', UserController.show);
 router.delete('/:id', UserController.delete);
 
+
+router.get('/search/all', UserController.all);
+
 module.exports = router;
