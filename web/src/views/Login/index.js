@@ -19,9 +19,7 @@ function Login() {
             for (i=0;i<response.data.length;i++){
                 if(response.data[i].user==login){
                     if(response.data[i].pass==senha){
-                        console.log(response.data[i]._id)
                         let id = response.data[i]._id
-                        console.log(id)
                         localStorage.setItem('@tamarcado/userid',id);
                         setRedirect(true);
                         window.location.reload();
