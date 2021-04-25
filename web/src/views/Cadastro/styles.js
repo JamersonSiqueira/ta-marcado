@@ -9,6 +9,10 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     background-color: #38A6FF;
+    img {
+        width: 160px;
+        margin-top: 10px;
+    }
 `
 
 export const Content = styled.div`
@@ -16,36 +20,24 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
     img {
-        width: 300px;
+        width: 150px;
         margin: 15px;
     }
 
     h1 {
         color: #FFFFFF;
+        font-size: 30px;
     }
 
     p {
         color: #006BC2;
     }
     background-color: #38A6FF;
-    a:link{
-        color: #FFFFFF;  
-        text-decoration: none;
-    }
-    a:visited{
-        color: #FFFFFF;  
-        text-decoration: none;
-    }
-    a:hover{
-        color: #006BC2;  
-        text-decoration: none;
-    }
-    
 `
 
-export const ValidationCode = styled.div`
+export const ContainerForm = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px;

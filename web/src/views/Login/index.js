@@ -1,5 +1,5 @@
 import React, { useState}  from 'react';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import api from '../../services/api';
 import Footer from '../../components/Footer';
@@ -36,6 +36,7 @@ function Login() {
 
     return (
         <S.Container>
+            
             {redirect && <Redirect to="/"/>}
             <S.Content>
                 <img src={logo}/>
@@ -47,7 +48,7 @@ function Login() {
                     <input type="password" onChange={e => setSenha(e.target.value)} value={senha}/>
                     <button type="button" onClick={verifyLogin}>Entrar !</button>
                 </S.ValidationCode>
-
+                <Link to={`/cadastro`}>Não tem conta? Cadastre-se !</Link>
             </S.Content>
             <Footer />
         </S.Container>
