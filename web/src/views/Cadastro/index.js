@@ -51,7 +51,7 @@ function Cadastro() {
             setRedirect(true)
         })
         .catch( () =>{
-            alert("Deu merda!")
+            alert("Algo deu errado!")
         })
     }
         else {
