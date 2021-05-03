@@ -1,6 +1,6 @@
 const UserModel = require('../model/UserModel');
 
-class TaskController {
+class UserController {
 
     async create (req, res){
         const user =  new UserModel(req.body);
@@ -58,4 +58,4 @@ class TaskController {
     }
 }
 
-module.exports = new TaskController();
+module.exports = new UserController();
