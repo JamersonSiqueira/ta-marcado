@@ -12,7 +12,6 @@ function Task({match}) {
   const [redirect, setRedirect] = useState(false)
   const [type, setType] = useState();
   const [title, setTitle] = useState();
-  const [id, setId] = useState();
   const [done, setDone] = useState(false);
   const [description, setDescription] = useState();
   const [date, setDate] = useState();
