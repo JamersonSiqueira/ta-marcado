@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import Task from '../views/Task';
 import Login from '../views/Login';
 import Cadastro from '../views/Cadastro';
+import Profile from '../views/Profile';
 
 export default function Routes (){
 
@@ -16,6 +17,7 @@ export default function Routes (){
                 <Route path="/task" exact component={Task}></Route>
                 <Route path="/task/:id" exact component={Task}></Route>
                 <Route path="/login" exact component={Login}></Route>
+                <Route path="/profile" exact component={Profile}></Route>
             </Switch>
         </BrowserRouter>
     )
