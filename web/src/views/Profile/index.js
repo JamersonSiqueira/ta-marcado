@@ -12,15 +12,22 @@ import isConnected from '../../utils/isConnected';
 function Profile() {
   const [filterActived, setFilterActived] = useState('today');
   const [username, setUsername] = useState('username');
-  const [done, setDone] = useState('x');
-  const [notDone, setNotDone] = useState('x');
-  const [tasks, setTasks] = useState([]);
+  const [done, setDone] = useState([]);
+  const [undone, setUndone]= useState([]);
   const [redirect, setRedirect] = useState(false);
 
-  async function loadTasks(){
-    await api.get(`/task/filter/${filterActived}/${isConnected}`)
+  async function loadStatus(){
+    await api.get(`/user/${isConnected}`)
     .then(response => {
-      setTasks(response.data);
+      setUsername(response.data.user)
+    })
+    await api.get(`/task/filter/countdone/${isConnected}`)
+    .then(response => {
+      setDone(response.data);
+    })
+    await api.get(`/task/filter/countundone/${isConnected}`)
+    .then(response => {
+      setUndone(response.data);
     })
   }
 
@@ -31,8 +38,7 @@ function Profile() {
   }
 
   useEffect( () => {
-    loadTasks();
-    
+    loadStatus();
     if(!isConnected)
     setRedirect(true);
   }, [filterActived])
@@ -53,38 +59,40 @@ function Profile() {
           <S.Subtitle>
             <h4>{username}</h4>
           </S.Subtitle>
-          <S.ContentTasks>
+            <S.ContentTasks>
             <S.LeftSideTasks>
-            <span>Tarefas realizadas: {done}</span>
+            <span>Tarefas concluidas: {done["total"]}</span>
             <S.TasksDiv>
               <S.TasksDivTitle>
-              <span class="tipos">Tipos:</span>
+                <S.Span class="tipos">Tipos:</S.Span>
             </S.TasksDivTitle>
-            <span>Tarefas padrão: </span>
-            <span>Esportes: </span>
-            <span>Alimentação: </span>
-            <span>Social: </span>
-            <span>Estudos: </span>
-            <span>Compras: </span>
-            <span>Viagens: </span>
-            <span>Academia: </span>
-            </S.TasksDiv>
+                <S.Span>Tarefas padrão: {done["padrao"]}</S.Span>
+                <S.Span>Esportes: {done["esportes"]}</S.Span>
+                <S.Span>Alimentação: {done["alimentacao"]}</S.Span>
+                <S.Span>Trabalho: {done["trabalho"]}</S.Span>
+                <S.Span>Social: {done["social"]}</S.Span>
+                <S.Span>Estudos: {done["estudos"]}</S.Span>
+                <S.Span>Compras: {done["shopping"]}</S.Span>
+                <S.Span>Viagens: {done["viagens"]}</S.Span>
+                <S.Span>Academia: {done["academia"]}</S.Span>
+            </S.TasksDiv> 
             </S.LeftSideTasks>
             <S.RightSideTasks>
-            <span>Tarefas a concluir: {notDone}</span>
+            <span type="tipos">Tarefas não concluidas: {undone["total"]}</span>
             <S.TasksDiv>
               <S.TasksDivTitle>
-              <span class="tipos">Tipos:</span>
+                <S.Span class="tipos">Tipos:</S.Span>
             </S.TasksDivTitle>
-            <span>Tarefas padrão: </span>
-            <span>Esportes: </span>
-            <span>Alimentação: </span>
-            <span>Social: </span>
-            <span>Estudos: </span>
-            <span>Compras: </span>
-            <span>Viagens: </span>
-            <span>Academia: </span>
-            </S.TasksDiv>
+                <S.Span>Tarefas padrão: {undone["padrao"]}</S.Span>
+                <S.Span>Esportes: {undone["esportes"]}</S.Span>
+                <S.Span>Alimentação: {undone["alimentacao"]}</S.Span>
+                <S.Span>Trabalho: {undone["trabalho"]}</S.Span>
+                <S.Span>Social: {undone["social"]}</S.Span>
+                <S.Span>Estudos: {undone["estudos"]}</S.Span>
+                <S.Span>Compras: {undone["shopping"]}</S.Span>
+                <S.Span>Viagens: {undone["viagens"]}</S.Span>
+                <S.Span>Academia: {undone["academia"]}</S.Span>
+            </S.TasksDiv> 
             </S.RightSideTasks>
           </S.ContentTasks>
         </S.LeftSide>

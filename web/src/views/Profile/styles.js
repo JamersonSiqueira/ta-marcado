@@ -30,6 +30,9 @@ export const Image = styled.div`
         width:130px;
     }
 `
+export const Span = styled.span`
+    margin-top: 5px;
+`
 export const Title = styled.div`
     width: 100%;
     display: flex;
@@ -98,9 +101,6 @@ export const TasksDiv = styled.div`
     margin: 5px;
     padding: 5px 10px;
     box-shadow: -3px 1px 13px -2px rgba(0,0,0,0.75);
-        span {
-            margin-top: 5px;
-        }
 `
 
 export const RightSideTasks = styled.div`
@@ -111,4 +111,8 @@ export const RightSideTasks = styled.div`
     align-items: center;
     justify-content: center;
     padding-left: 10px;
+
+    span {
+        margin-bot: 5px;
+    }
 `

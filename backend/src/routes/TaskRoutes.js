@@ -17,4 +17,7 @@ router.get('/filter/week/:userid',  TaskController.week);
 router.get('/filter/month/:userid', TaskController.month);
 router.get('/filter/year/:userid',  TaskController.year);
 
+router.get('/filter/countdone/:userid',   TaskController.countDone);
+router.get('/filter/countundone/:userid',   TaskController.countUndone);
+
 module.exports = router;

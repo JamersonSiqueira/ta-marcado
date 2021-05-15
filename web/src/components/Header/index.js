@@ -35,6 +35,8 @@ function Header({onClickNotify}) {
         <span className="dividir"/>
         <Link to="/task">NOVA TAREFA</Link>
         <span className="dividir"/>
+        <Link to="/profile">PERFIL</Link>
+        <span className="dividir"/>
         { !isConnected ?
         <Link to="/qrcode">SINCRONIZAR CELULAR</Link>
         :

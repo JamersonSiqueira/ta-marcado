@@ -1,6 +1,7 @@
 const TaskModel = require('../model/TaskModel');
 const current = new Date();
 const { startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear } = require('date-fns');
+const { db } = require('../model/TaskModel');
 
 class TaskController {
 
@@ -47,6 +48,148 @@ class TaskController {
         .catch(error => {
             return res.status(500).json(error);
         });
+    }
+
+    async countDone(req,res) {
+        var results = []
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            }).then(response => {
+                results["total"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 1}).then(response => {
+                results["padrao"]=response;
+            })
+
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 2}).then(response => {
+                   results["esportes"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 3}).then(response => {
+                   results["alimentacao"]=response;
+            }) 
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 4}).then(response => {
+                results["trabalho"]=response;
+            }) 
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 5}).then(response => {
+                results["social"]=response;
+            })
+            
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 6}).then(response => {
+                results["estudos"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 7}).then(response => {
+                results["shopping"]=response;
+            })
+
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 8}).then(response => {
+                    results["viagens"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: true,
+            type: 9}).then(response => {
+                   results["academia"]=response;
+            })
+        var arrayToString = JSON.stringify(Object.assign({}, results));  // convert array to string
+        var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json object
+
+        return res.status(200).json(stringToJsonObject);
+    }
+
+    async countUndone(req,res) {
+        var results = []
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            }).then(response => {
+                results["total"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 1}).then(response => {
+                results["padrao"]=response;
+            })
+
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 2}).then(response => {
+                   results["esportes"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 3}).then(response => {
+                   results["alimentacao"]=response;
+            }) 
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 4}).then(response => {
+                results["trabalho"]=response;
+            }) 
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 5}).then(response => {
+                results["social"]=response;
+            })
+            
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 6}).then(response => {
+                results["estudos"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 7}).then(response => {
+                results["shopping"]=response;
+            })
+
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 8}).then(response => {
+                    results["viagens"]=response;
+            })
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            done: false,
+            type: 9}).then(response => {
+                   results["academia"]=response;
+            })
+        var arrayToString = JSON.stringify(Object.assign({}, results));  // convert array to string
+        var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json object
+
+        return res.status(200).json(stringToJsonObject);
     }
 
     async delete(req, res) {
