@@ -28,7 +28,9 @@ function Header({onClickNotify}) {
   return (
     <S.Container>
       <S.LeftSide>
+        <Link to="/">
         <img src={logo} alt="Logotipo"/>
+        </Link>
       </S.LeftSide>
       <S.RightSide>
         <Link to="/">INÍCIO</Link>
@@ -37,13 +39,9 @@ function Header({onClickNotify}) {
         <span className="dividir"/>
         <Link to="/profile">PERFIL</Link>
         <span className="dividir"/>
-        { !isConnected ?
-        <Link to="/qrcode">SINCRONIZAR CELULAR</Link>
-        :
         <button type='button' onClick={logout}>SAIR</button>
-      }
         {
-          lateCount &&
+          lateCount!=0 &&
           <>
         <span className="dividir"/>
         <button onClick={onClickNotify} id="notification">

@@ -3,18 +3,23 @@ import api from '../../services/api';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import usericon from '../../assets/Unknown_person.jpg';
-import FilterCard from '../../components/FilterCard';
-import TaskCard from '../../components/TaskCard';
 import * as S from './styles';
 import {Link, Redirect} from 'react-router-dom';
 import isConnected from '../../utils/isConnected';
+import LoadingMask from "react-loadingmask";
+import "react-loadingmask/dist/react-loadingmask.css";
 
 function Profile() {
-  const [filterActived, setFilterActived] = useState('today');
+  const [updateTasks, setUpdateTasks] = useState('today');
   const [username, setUsername] = useState('username');
   const [done, setDone] = useState([]);
   const [undone, setUndone]= useState([]);
+  const [loading, setLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
+  const [conq1, setConq1] = useState(false);
+  const [conq2, setConq2] = useState(false);
+  const [conq3, setConq3] = useState(false);
+  const [conq4, setConq4] = useState(false);
 
   async function loadStatus(){
     await api.get(`/user/${isConnected}`)
@@ -29,26 +34,48 @@ function Profile() {
     .then(response => {
       setUndone(response.data);
     })
+    setLoading(false);
   }
-
-
 
   function Notificacao(){
-    setFilterActived('late');
+    setUpdateTasks('late');
   }
 
+  function verifyConquest(){
+    if(done["total"]>=5){
+      setConq1(true)
+      setConq2(true)
+      setConq3(true)
+    } else if(done["total"]>=3){
+      setConq1(true)
+      setConq2(true)
+    } else if(done["total"]>0)
+    setConq1(true)
+    
+    if(done["esportes"]>=3)
+    setConq4(true)
+  }
+  
   useEffect( () => {
+    //Carregar tarefas
     loadStatus();
+    //Verificar conquistas
+    verifyConquest();
+    //Função do header
+    Notificacao();
+
     if(!isConnected)
     setRedirect(true);
-  }, [filterActived])
+  }, [done])
 
 
   return (
       <S.Container>
         {redirect && <Redirect to="/login/"/>}
       <Header onClickNotify={Notificacao}/>
+      <LoadingMask loading={loading} text={"Carregando..."}>
       <S.Content>
+      
         <S.LeftSide>
           <S.Title>
             <h3>PERFIL</h3>
@@ -96,10 +123,57 @@ function Profile() {
             </S.RightSideTasks>
           </S.ContentTasks>
         </S.LeftSide>
+
         <S.RightSide>
-        <span>direita</span>
+          <S.Title>
+            <h3>CONQUISTAS</h3>
+          </S.Title>
+          {
+            loading ?
+            <>
+            </>
+            :
+            <S.TasksDiv>
+          { conq1==true ?            
+            <S.Span>
+              Conquista Feita
+            </S.Span>
+            :
+            <S.Span>
+              Conquista Não foi feita
+            </S.Span>
+            }
+            { conq2==true ?            
+            <S.Span>
+              Conquista Feita
+            </S.Span>
+            :
+            <S.Span>
+              Conquista Não foi feita
+            </S.Span>
+            }
+            { conq3==true ?            
+            <S.Span>
+              Conquista Feita
+            </S.Span>
+            :
+            <S.Span>
+              Conquista Não foi feita
+            </S.Span>
+            }
+            { conq4==true ?            
+            <S.Span>
+              Conquista Feita
+            </S.Span>
+            :
+            <S.Span>
+              Conquista Não foi feita
+            </S.Span>
+            }
+          </S.TasksDiv>}
         </S.RightSide>
       </S.Content>
+      </LoadingMask>
       <Footer />
       
       </S.Container>

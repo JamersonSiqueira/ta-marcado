@@ -71,8 +71,7 @@ export const RightSide = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;  
-    background-color: #F00;
+    flex-direction: column; 
 `
 
 export const LeftSideTasks = styled.div`
