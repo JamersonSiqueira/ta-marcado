@@ -179,7 +179,7 @@ function Profile() {
             { conq3==true ?            
             <S.ConquestDiv>
             <img src={imgconq3} alt="conquista3"/>
-            <S.SpanConq>Mestre da Agenda</S.SpanConq>
+            <S.SpanConq>Ancião da Agenda</S.SpanConq>
             <S.DivRightConq>
             <S.SpanConqRight>Concluiu 5 tarefas de qualquer tipo</S.SpanConqRight>
             </S.DivRightConq>
@@ -187,7 +187,7 @@ function Profile() {
           :
           <S.ConquestDivOff>
             <img src={imgconq3off} alt="conquista3bloq"/>
-            <S.SpanConqOff>Mestre da Agenda</S.SpanConqOff>
+            <S.SpanConqOff>Ancião da Agenda</S.SpanConqOff>
             <S.DivRightConq>
             <S.SpanConqRightOff>Concluiu 5 tarefas de qualquer tipo</S.SpanConqRightOff>
             </S.DivRightConq>
