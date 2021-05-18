@@ -8,6 +8,14 @@ import {Link, Redirect} from 'react-router-dom';
 import isConnected from '../../utils/isConnected';
 import LoadingMask from "react-loadingmask";
 import "react-loadingmask/dist/react-loadingmask.css";
+import imgconq1off from "../../assets/aprendizoff.png";
+import imgconq1 from "../../assets/aprendiz.png";
+import imgconq2off from "../../assets/mestreoff.png";
+import imgconq2 from "../../assets/mestre.png";
+import imgconq3off from "../../assets/anciaooff.png";
+import imgconq3 from "../../assets/anciao.png";
+import imgconq4off from "../../assets/esportesoff.png";
+import imgconq4 from "../../assets/esportes.png";
 
 function Profile() {
   const [updateTasks, setUpdateTasks] = useState('today');
@@ -24,7 +32,7 @@ function Profile() {
   async function loadStatus(){
     await api.get(`/user/${isConnected}`)
     .then(response => {
-      setUsername(response.data.user)
+      setUsername(response.data.nome+" "+response.data.sobrenome)
     })
     await api.get(`/task/filter/countdone/${isConnected}`)
     .then(response => {
@@ -91,7 +99,7 @@ function Profile() {
             <span>Tarefas concluidas: {done["total"]}</span>
             <S.TasksDiv>
               <S.TasksDivTitle>
-                <S.Span class="tipos">Tipos:</S.Span>
+                <S.Span>Tipos:</S.Span>
             </S.TasksDivTitle>
                 <S.Span>Tarefas padrão: {done["padrao"]}</S.Span>
                 <S.Span>Esportes: {done["esportes"]}</S.Span>
@@ -133,44 +141,77 @@ function Profile() {
             <>
             </>
             :
-            <S.TasksDiv>
+            <S.Container>
           { conq1==true ?            
-            <S.Span>
-              Conquista Feita
-            </S.Span>
+            <S.ConquestDiv>
+              <img src={imgconq1} alt="conquista1"/>
+              <S.SpanConq>Aprendiz da Agenda</S.SpanConq>
+              <S.DivRightConq>
+              <S.SpanConqRight>Concluiu 1 tarefa de qualquer tipo</S.SpanConqRight>
+              </S.DivRightConq>
+            </S.ConquestDiv>
             :
-            <S.Span>
-              Conquista Não foi feita
-            </S.Span>
+            <S.ConquestDivOff>
+              <img src={imgconq1off} alt="conquista1bloq"/>
+              <S.SpanConqOff>Aprendiz da Agenda</S.SpanConqOff>
+              <S.DivRightConq>
+              <S.SpanConqRightOff>Concluiu 1 tarefa de qualquer tipo</S.SpanConqRightOff>
+              </S.DivRightConq>
+            </S.ConquestDivOff>
             }
             { conq2==true ?            
-            <S.Span>
-              Conquista Feita
-            </S.Span>
-            :
-            <S.Span>
-              Conquista Não foi feita
-            </S.Span>
+            <S.ConquestDiv>
+            <img src={imgconq2} alt="conquista2"/>
+            <S.SpanConq>Mestre da Agenda</S.SpanConq>
+            <S.DivRightConq>
+            <S.SpanConqRight>Concluiu 3 tarefas de qualquer tipo</S.SpanConqRight>
+            </S.DivRightConq>
+          </S.ConquestDiv>
+          :
+          <S.ConquestDivOff>
+            <img src={imgconq2off} alt="conquista2bloq"/>
+            <S.SpanConqOff>Mestre da Agenda</S.SpanConqOff>
+            <S.DivRightConq>
+            <S.SpanConqRightOff>Concluiu 3 tarefas de qualquer tipo</S.SpanConqRightOff>
+            </S.DivRightConq>
+          </S.ConquestDivOff>
             }
             { conq3==true ?            
-            <S.Span>
-              Conquista Feita
-            </S.Span>
-            :
-            <S.Span>
-              Conquista Não foi feita
-            </S.Span>
+            <S.ConquestDiv>
+            <img src={imgconq3} alt="conquista3"/>
+            <S.SpanConq>Mestre da Agenda</S.SpanConq>
+            <S.DivRightConq>
+            <S.SpanConqRight>Concluiu 5 tarefas de qualquer tipo</S.SpanConqRight>
+            </S.DivRightConq>
+          </S.ConquestDiv>
+          :
+          <S.ConquestDivOff>
+            <img src={imgconq3off} alt="conquista3bloq"/>
+            <S.SpanConqOff>Mestre da Agenda</S.SpanConqOff>
+            <S.DivRightConq>
+            <S.SpanConqRightOff>Concluiu 5 tarefas de qualquer tipo</S.SpanConqRightOff>
+            </S.DivRightConq>
+          </S.ConquestDivOff>
             }
             { conq4==true ?            
-            <S.Span>
-              Conquista Feita
-            </S.Span>
-            :
-            <S.Span>
-              Conquista Não foi feita
-            </S.Span>
+            <S.ConquestDiv>
+            <img src={imgconq4} alt="conquista4"/>
+            <S.SpanConq>Amante dos Esportes</S.SpanConq>
+            <S.DivRightConq>
+            <S.SpanConqRight>Concluiu 3 tarefas do tipo "Esportes"</S.SpanConqRight>
+            </S.DivRightConq>
+          </S.ConquestDiv>
+          :
+          <S.ConquestDivOff>
+            <img src={imgconq4off} alt="conquista4bloq"/>
+            <S.SpanConqOff>Amante dos Esportes</S.SpanConqOff>
+            <S.DivRightConq>
+            <S.SpanConqRightOff>Concluiu 3 tarefas do tipo "Esportes"</S.SpanConqRightOff>
+            </S.DivRightConq>
+          </S.ConquestDivOff>
             }
-          </S.TasksDiv>}
+            </S.Container>
+            }
         </S.RightSide>
       </S.Content>
       </LoadingMask>

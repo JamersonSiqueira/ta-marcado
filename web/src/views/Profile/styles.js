@@ -27,11 +27,12 @@ export const Image = styled.div`
     display: flex;
     img {
         border-radius: 50px;
-        width:130px;
+        width: 130px;
     }
 `
 export const Span = styled.span`
-    margin-top: 5px;
+    margin-bottom: 7px;
+        padding: 0 10px;
 `
 export const Title = styled.div`
     width: 100%;
@@ -54,7 +55,7 @@ export const Subtitle = styled.div`
         color: #38A6FF;
         position: relative;
         background: #FFF;
-        padding: 0 10px;
+        margin: 5px;
     }
 `
 
@@ -87,7 +88,7 @@ export const TasksDivTitle = styled.div`
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 `
 export const TasksDiv = styled.div`
     display: flex;
@@ -95,11 +96,11 @@ export const TasksDiv = styled.div`
     justify-content: center;
     flex-direction: column;
     background-color: #FFF;
-    border-radius: 15px;
+    border-radius: 7px;
     border: 1px solid #707070;
     margin: 5px;
     padding: 5px 10px;
-    box-shadow: -3px 1px 13px -2px rgba(0,0,0,0.75);
+    box-shadow: -3px 3px 8px -5px rgba(0,0,0,0.50);
 `
 
 export const RightSideTasks = styled.div`
@@ -114,4 +115,69 @@ export const RightSideTasks = styled.div`
     span {
         margin-bot: 5px;
     }
+`
+export const ConquestDiv = styled.div`
+    width: 85%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(112,112,112);
+    margin: 5px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+
+    img {
+        height: 60px;
+        padding-left: 10px;
+    }
+`
+
+export const ConquestDivOff = styled.div`
+    width: 85%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(112,112,112,0.5);
+    border: 1px solid rgba(112,112,112);
+    margin: 5px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    cursor: not-allowed;
+
+    img {
+        width: 60px;
+        height: 60px;
+        padding-left: 10px;
+    }
+`
+
+export const SpanConqOff = styled.span`
+    color: #707070;
+    font-weight: bold;
+    padding-left: 15px;
+    
+`
+
+export const SpanConq = styled.span`
+    color: #38A6FF;
+    font-weight: bold;
+    padding-left: 15px;
+`
+
+export const DivRightConq = styled.div` 
+    align-items: flex-end;
+    justify-content: flex-end;
+`
+export const SpanConqRight = styled.span`
+    color: #38A6FF;
+    font-size: 12px;
+    float: right;
+`
+
+export const SpanConqRightOff = styled.span`
+    color: #707070;
+    font-size: 12px;
+    float: right;
 `
