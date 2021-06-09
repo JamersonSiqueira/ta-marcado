@@ -17,8 +17,8 @@ function Login() {
         .then(response => {
             var i;
             for (i=0;i<response.data.length;i++){
-                if(response.data[i].user==login){
-                    if(response.data[i].pass==senha){
+                if(response.data[i].user===login){
+                    if(response.data[i].pass===senha){
                         let id = response.data[i]._id
                         localStorage.setItem('@tamarcado/userid',id);
                         setRedirect(true);

@@ -41,7 +41,7 @@ function Header({onClickNotify}) {
         <span className="dividir"/>
         <button type='button' onClick={logout}>SAIR</button>
         {
-          lateCount!=0 &&
+          lateCount!==0 &&
           <>
         <span className="dividir"/>
         <button onClick={onClickNotify} id="notification">

@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import usericon from '../../assets/Unknown_person.jpg';
 import * as S from './styles';
-import {Link, Redirect} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import isConnected from '../../utils/isConnected';
 import LoadingMask from "react-loadingmask";
 import "react-loadingmask/dist/react-loadingmask.css";
@@ -142,7 +142,7 @@ function Profile() {
             </>
             :
             <S.Container>
-          { conq1==true ?            
+          { conq1===true ?            
             <S.ConquestDiv>
               <img src={imgconq1} alt="conquista1"/>
               <S.SpanConq>Aprendiz da Agenda</S.SpanConq>
@@ -159,7 +159,7 @@ function Profile() {
               </S.DivRightConq>
             </S.ConquestDivOff>
             }
-            { conq2==true ?            
+            { conq2===true ?            
             <S.ConquestDiv>
             <img src={imgconq2} alt="conquista2"/>
             <S.SpanConq>Mestre da Agenda</S.SpanConq>
@@ -176,7 +176,7 @@ function Profile() {
             </S.DivRightConq>
           </S.ConquestDivOff>
             }
-            { conq3==true ?            
+            { conq3===true ?            
             <S.ConquestDiv>
             <img src={imgconq3} alt="conquista3"/>
             <S.SpanConq>Ancião da Agenda</S.SpanConq>
@@ -193,7 +193,7 @@ function Profile() {
             </S.DivRightConq>
           </S.ConquestDivOff>
             }
-            { conq4==true ?            
+            { conq4===true ?            
             <S.ConquestDiv>
             <img src={imgconq4} alt="conquista4"/>
             <S.SpanConq>Amante dos Esportes</S.SpanConq>

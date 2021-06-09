@@ -1,7 +1,6 @@
 const TaskModel = require('../model/TaskModel');
 const current = new Date();
 const { startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear } = require('date-fns');
-const { db } = require('../model/TaskModel');
 
 class TaskController {
 
@@ -89,7 +88,6 @@ class TaskController {
             type: 5}).then(response => {
                 results["social"]=response;
             })
-            
         await TaskModel.countDocuments({
             userid: {'$in': req.params.userid},
             done: true,
@@ -102,7 +100,6 @@ class TaskController {
             type: 7}).then(response => {
                 results["shopping"]=response;
             })
-
         await TaskModel.countDocuments({
             userid: {'$in': req.params.userid},
             done: true,
@@ -160,7 +157,6 @@ class TaskController {
             type: 5}).then(response => {
                 results["social"]=response;
             })
-            
         await TaskModel.countDocuments({
             userid: {'$in': req.params.userid},
             done: false,
@@ -173,7 +169,6 @@ class TaskController {
             type: 7}).then(response => {
                 results["shopping"]=response;
             })
-
         await TaskModel.countDocuments({
             userid: {'$in': req.params.userid},
             done: false,

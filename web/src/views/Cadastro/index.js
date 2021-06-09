@@ -32,7 +32,7 @@ function Cadastro() {
         .then(response => {
             var i;
             for (i=0;i<response.data.length;i++){
-                if(response.data[i].user==user){
+                if(response.data[i].user===user){
                     flag=true;
                 }
             }
@@ -60,7 +60,7 @@ function Cadastro() {
 
     return (
         <S.Container>
-            <Link to={`/`}><img src={logo}/></Link>
+            <Link to={`/`}><img src={logo} alt="logo"/></Link>
             
             
             {redirect && <Redirect to="/login"/>}
