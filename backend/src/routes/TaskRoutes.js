@@ -19,5 +19,6 @@ router.get('/filter/year/:userid',  TaskController.year);
 
 router.get('/filter/countdone/:userid',   TaskController.countDone);
 router.get('/filter/countundone/:userid',   TaskController.countUndone);
+router.get('/teste/:userid/:type', TaskController.countByType);
 
 module.exports = router;

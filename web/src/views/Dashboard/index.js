@@ -7,16 +7,22 @@ import {Link, Redirect} from 'react-router-dom';
 import isConnected from '../../utils/isConnected';
 import LoadingMask from "react-loadingmask";
 import "react-loadingmask/dist/react-loadingmask.css";
-import {Bar} from "react-chartjs-2";
+import {Bar, Line} from "react-chartjs-2";
+import Chart from './Chart';
 
 function Dashboard() {
   const [updateTasks, setUpdateTasks] = useState('today');
   const [username, setUsername] = useState('username');
+  const [tasks, setTasks] = useState([]);
   const [done, setDone] = useState([]);
   const [bargraph, setBarGraph] = useState([]);
   const [undone, setUndone]= useState([]);
   const [loading, setLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
+  const [labelsgrafico, setLabelsGrafico] = useState([]);
+  const [chart, setChart] = useState({});
+  var labels;
+  var taskdata;
 
   async function loadStatus(){
     await api.get(`/user/${isConnected}`)
@@ -34,14 +40,50 @@ function Dashboard() {
     setLoading(false);
   }
 
+  async function loadTasks(){
+    await api.get(`/task/filter/all/${isConnected}`)
+    .then(response => {
+      setTasks(response.data);
+      setChart({
+        labels: tasks.map(function(e){
+          return e.when;
+        }),
+        datasets: [
+          {
+            label: "Tarefas",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: "butt",
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: tasks.map(function(e){
+              return e.type;
+            })
+          }
+        ]
+      });
+    })
+  }
+
   function Notificacao(){
     setUpdateTasks('late');
   }
 
   function loadGraphs(){
     var array = 
-    [done["total"],
-    done["padrao"],
+    [done["padrao"],
     done["esportes"],
     done["alimentacao"],
     done["trabalho"],
@@ -49,14 +91,19 @@ function Dashboard() {
     done["estudos"],
     done["shopping"],
     done["viagens"],
-    done["academia"]
+    done["academia"],
+    done["total"]
   ]
     setBarGraph(array);
   }
   
   useEffect( () => {
+    loadTasks();
     loadStatus();
     loadGraphs();
+
+    console.log('taskdata: ')
+    console.log(taskdata)
     if(!isConnected)
     setRedirect(true);
   }, [loading])
@@ -70,9 +117,12 @@ function Dashboard() {
         
         <S.Content>
           <S.LeftSide>
-        <Bar 
+        <Chart data={chart}/>
+          </S.LeftSide>
+          <S.RightSide>
+          <Bar 
         data={{
-          labels: ['Total', 'Padrão', 'Esportes', 'Alimentação', 'Trabalho', 'Social', 'Estudos', 'Compras','Viagens','Academia'],
+          labels: ['Padrão', 'Esportes', 'Alimentação', 'Trabalho', 'Social', 'Estudos', 'Compras','Viagens','Academia', 'Total'],
           datasets: [{
               label: 'Tarefas',
               data: bargraph,
@@ -98,10 +148,10 @@ function Dashboard() {
         height={400}
         width={600}
         options={{
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
         }}
         />
-          </S.LeftSide>
+          </S.RightSide>
         </S.Content>
       </LoadingMask>
       <Footer />

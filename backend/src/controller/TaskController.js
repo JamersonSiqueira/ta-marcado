@@ -118,6 +118,22 @@ class TaskController {
         return res.status(200).json(stringToJsonObject);
     }
 
+    async countByType(req,res) {
+        var results = []
+        await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            when: {'$gte': startOfWeek(current), '$lte': endOfWeek(current)},
+            type: req.params.type
+        }).then(response => {
+            if(response)
+            return res.status(200).json(response);
+            else
+            return res.status(404).json({error: 'Item não encontrado!'});
+        }).catch(error => {
+            return res.status(500).json(error);
+        });
+    }
+
     async countUndone(req,res) {
         var results = []
         await TaskModel.countDocuments({
