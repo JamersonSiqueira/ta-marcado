@@ -8,7 +8,7 @@ export const Container = styled.div`
 `
 
 export const LeftSide = styled.div`
-    width: 50%;
+    width: 30%;
     height: 70px;
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@ export const LeftSide = styled.div`
 `
 
 export const RightSide = styled.div`
-    width: 50%;
+    width: 70%;
     height: 70px;
     display: flex;
     align-items: center;

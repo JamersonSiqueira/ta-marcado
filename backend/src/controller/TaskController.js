@@ -1,6 +1,6 @@
 const TaskModel = require('../model/TaskModel');
 const current = new Date();
-const { startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear } = require('date-fns');
+const { eachDayOfInterval,startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear } = require('date-fns');
 
 class TaskController {
 
@@ -114,24 +114,7 @@ class TaskController {
             })
         var arrayToString = JSON.stringify(Object.assign({}, results));  // convert array to string
         var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json object
-
         return res.status(200).json(stringToJsonObject);
-    }
-
-    async countByType(req,res) {
-        var results = []
-        await TaskModel.countDocuments({
-            userid: {'$in': req.params.userid},
-            when: {'$gte': startOfWeek(current), '$lte': endOfWeek(current)},
-            type: req.params.type
-        }).then(response => {
-            if(response)
-            return res.status(200).json(response);
-            else
-            return res.status(404).json({error: 'Item não encontrado!'});
-        }).catch(error => {
-            return res.status(500).json(error);
-        });
     }
 
     async countUndone(req,res) {
@@ -200,6 +183,43 @@ class TaskController {
         var arrayToString = JSON.stringify(Object.assign({}, results));  // convert array to string
         var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json object
 
+        return res.status(200).json(stringToJsonObject);
+    }
+
+    async countByType(req,res) {
+       await TaskModel.countDocuments({
+            userid: {'$in': req.params.userid},
+            when: {'$gte': startOfWeek(current), '$lte': endOfWeek(current)},
+            type: req.params.type
+        }).then(response => {
+            if(response)
+            return res.status(200).json(response);
+            else
+            return res.status(404).json({error: 'Item não encontrado!'});
+        }).catch(error => {
+            return res.status(500).json(error);
+        });
+    }
+
+    async countByTypeAndWeek(req,res) {
+        var results = []
+        const week = eachDayOfInterval({
+            start: startOfWeek(current),
+            end: endOfWeek(current)
+        });
+        for(var i=0;i<=6;i++){
+            await TaskModel.countDocuments({
+                userid: {'$in': req.params.userid},
+                when: {'$gte': startOfDay(week[i]), '$lte': endOfDay(week[i])},
+                type: req.params.type
+            }).then(response => {
+                var temp = '{"day": "'+week[i].toDateString()+'",'
+                + '"count": "'+response+'"}'
+                results[i]=JSON.parse(temp);  
+            })
+        }
+        var arrayToString = JSON.stringify(Object.assign({}, results));  // convert array to string
+        var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json object
         return res.status(200).json(stringToJsonObject);
     }
 

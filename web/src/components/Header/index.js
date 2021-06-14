@@ -39,6 +39,8 @@ function Header({onClickNotify}) {
         <span className="dividir"/>
         <Link to="/profile">PERFIL</Link>
         <span className="dividir"/>
+        <Link to="/dashboard">DASHBOARD</Link>
+        <span className="dividir"/>
         <button type='button' onClick={logout}>SAIR</button>
         {
           lateCount!==0 &&

@@ -59,14 +59,20 @@ export const LeftSide = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-right: 10px;
+    margin-top: 15px;
 `
-
+//Estilo do botão Select
+export const Select = styled.select `
+ 
+`
 export const RightSide = styled.div`
     width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column; 
+    margin-top: 15px;
 `
 
 export const LeftSideTasks = styled.div`
@@ -100,6 +106,18 @@ export const TasksDiv = styled.div`
 export const RightSideTasks = styled.div`
     width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+
+    span {
+        margin-bot: 5px;
+    }
+`
+
+export const RightSideGraph = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
