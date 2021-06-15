@@ -64,6 +64,16 @@ export const LeftSide = styled.div`
 `
 //Estilo do botão Select
 export const Select = styled.select `
+    background-color: #38A6FF;
+    color: white;
+    padding: 12px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
  
 `
 export const RightSide = styled.div`

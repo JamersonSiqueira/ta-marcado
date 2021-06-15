@@ -18,7 +18,7 @@ function Dashboard() {
   const [done, setDone] = useState([]);
   const [bargraph, setBarGraph] = useState([]);
   const [undone, setUndone]= useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [chart, setChart] = useState({});
   const [bar, setBar] = useState({});
