@@ -12,12 +12,10 @@ import ChartBar from './ChartBar'
 
 function Dashboard() {
   const [updateTasks, setUpdateTasks] = useState('today');
-  const [typeTasks, setTypeTasks] = useState(1);
-  const [typeTasksBar, setTypeTasksBar] = useState(0);
+  const [typeTasks, setTypeTasks] = useState(0);
   const [tasks, setTasks] = useState([]);
   const [done, setDone] = useState([]);
   const [bargraph, setBarGraph] = useState([]);
-  const [undone, setUndone]= useState([]);
   const [loading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [chart, setChart] = useState({});
@@ -29,10 +27,6 @@ function Dashboard() {
     await api.get(`/task/filter/countdone/${isConnected}`)
     .then(response => {
       setDone(response.data);
-    })
-    await api.get(`/task/filter/countundone/${isConnected}`)
-    .then(response => {
-      setUndone(response.data);
     })
     setLoading(false);
   }
@@ -77,7 +71,6 @@ function Dashboard() {
   }
 
   function loadGraphs(){
-    if(typeTasksBar===0){
     var array = 
     [done["padrao"],
     done["esportes"],
@@ -91,22 +84,6 @@ function Dashboard() {
     done["total"]
   ]
     setBarGraph(array);
-  } else if(typeTasksBar===1){
-    var arrayundone = 
-    [undone["padrao"],
-    undone["esportes"],
-    undone["alimentacao"],
-    undone["trabalho"],
-    undone["social"],
-    undone["estudos"],
-    undone["shopping"],
-    undone["viagens"],
-    undone["academia"],
-    undone["total"]
-  ]
-  console.log(arrayundone);
-  setBarGraph(arrayundone);
-  }
     setBar({
         labels: ['Padrão', 'Esportes', 'Alimentação', 'Trabalho', 'Social', 'Estudos', 'Compras','Viagens','Academia', 'Total'],
         datasets: [{
@@ -161,10 +138,6 @@ function Dashboard() {
     setLoading(true);
   }
 
-  function trocarTipoBar(e){
-    setTypeTasksBar(e.target.value);
-    setLoading(true);
-  }
   
   useEffect( () => {
     loadTasks();
@@ -190,6 +163,7 @@ function Dashboard() {
             <h3>Atividades Semanais por Tipo</h3>
             <S.Span>Tipo de tarefa:</S.Span>
             <S.Select value={typeTasks} onChange={trocarTipo}>
+              <option value={0}> </option>
               <option value={1}>Tarefa Padrão</option>
               <option value={2}>Esportes</option>
               <option value={3}>Alimentação</option>
@@ -206,14 +180,11 @@ function Dashboard() {
           </S.LeftSide>
           <S.RightSide>
           <div>
-            <S.Title>
-            <h3>Atividades Totais</h3>
-          <S.Span>Status da tarefa:</S.Span>
-              <S.Select value={typeTasksBar} onChange={trocarTipoBar}>
-                <option value={0}>Concluídas</option>
-                <option value={1}>A concluir</option>
-              </S.Select>
-            </S.Title>
+            <S.Title2>
+            <h3>Atividades Realizadas</h3>
+          <S.Span>     </S.Span>
+              
+            </S.Title2>
             </div>
             <ChartBar data={bar}/>
           </S.RightSide>
@@ -225,4 +196,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-  

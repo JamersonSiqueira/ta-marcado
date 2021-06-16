@@ -40,6 +40,15 @@ export const Title = styled.h3`
         background: #FFF;
         padding: 0 10px;
 `
+
+export const Title2 = styled.h3`
+        color: #38A6FF;
+        position: relative;
+        background: #FFF;
+        padding: 0 10px;
+        margin-bottom: 40px;
+`
+
 export const Subtitle = styled.div`
     width: 100%;
     display: flex;
@@ -76,6 +85,7 @@ export const Select = styled.select `
     outline: none;
  
 `
+
 export const RightSide = styled.div`
     width: 50%;
     height: 100%;
